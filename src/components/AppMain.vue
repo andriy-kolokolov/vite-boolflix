@@ -3,8 +3,10 @@
 </template>
 
 <script>
+import MovieCard from "./UI/MovieCard.vue";
 export default {
-  name: "AppMain"
+  name: "AppMain",
+  components: {MovieCard}
 }
 </script>
 
