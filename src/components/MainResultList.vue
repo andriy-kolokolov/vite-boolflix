@@ -3,9 +3,10 @@
     <movie-card
         v-for="(movie, i) in store.arrMovies"
         :key="i"
-        :title="movie.title"
+        :movie="movie"
     ></movie-card>
   </div>
+
 </template>
 
 <script>
