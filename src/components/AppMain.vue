@@ -1,15 +1,29 @@
 <template>
+  <div class="main-wrapper">
+    <main-result-list
+        class="result-list-content"
 
+    />
+  </div>
 </template>
 
 <script>
-import MovieCard from "./UI/MovieCard.vue";
+import MainResultList from "./MainResultList.vue";
+import {store} from "../store.js";
+
 export default {
   name: "AppMain",
-  components: {MovieCard}
+  components: {MainResultList},
+  data() {
+    return {}
+  }
 }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+@use "../assets/main" as *
+
+.result-list-content
+  margin-top: $header-height
 
 </style>

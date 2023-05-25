@@ -14,13 +14,28 @@
 
     <div class="header__right">
       <div class="input-group">
-        <input type="text" class="search-field form-control rounded-3" id="search-field" placeholder="Search...">
-        <div class="search-btn input-group-text">
+        <input @keyup.enter="search"
+               v-model="searchTerm"
+               type="text"
+               class="search-field form-control rounded-3"
+               id="search-field"
+               placeholder="Search..."
+        >
+        <div @click="search" class="search-btn input-group-text">
           <i class="fa-solid fa-magnifying-glass"/>
         </div>
       </div>
       <i class="fa-regular fa-bell"></i>
-      <img class="account-img" src="/account_img.png" alt="">
+<!--      <div class="dropdown">-->
+<!--        <select class="language-dropdown">-->
+<!--          <option value="en">English</option>-->
+<!--          <option value="fr">Italiano</option>-->
+<!--        </select>-->
+<!--      </div>-->
+      <div class="account-img-wrapper">
+        <img class="account-img" src="/account_img.png" alt="">
+        <i class="m-0 fa-solid fa-caret-down"></i>
+      </div>
     </div>
   </header>
 </template>
@@ -29,7 +44,17 @@
 export default {
   name: "AppHeader",
   data() {
-    return {}
+    return {
+      searchTerm: ''
+    }
+  },
+  methods: {
+    search() {
+      if (this.searchTerm.length !== 0) {
+        this.$emit('search', this.searchTerm)
+        this.searchTerm = '';
+      }
+    }
   }
 }
 </script>
@@ -80,7 +105,6 @@ $link-padding: 10px
 .header__right
   display: flex
   align-items: center
-  gap: $gap-elements
 
   i
     cursor: pointer
@@ -90,35 +114,49 @@ $link-padding: 10px
     &:hover
       opacity: .7
 
-  .input-group-text
-    color: white
-    background: transparent
-    border: 0
+  .input-group
 
-  &:hover .search-field,
-  &:focus-within .search-field
-    width: 250px
-    border: 1px solid rgba(128, 128, 128, 0.5)
-    opacity: 1
-
-
-  .search-field
-    width: 10px
-    opacity: 0
-    background-color: transparent
-    color: white
-    outline: none
-    transition: .5s
-
-    &::placeholder
+    .input-group-text
       color: white
+      background: transparent
+      border: 0
+      padding: 0
 
-  .account-img
-    cursor: pointer
+    &:hover .search-field,
+    &:focus-within .search-field
+      width: 250px
+      border: 1px solid rgba(128, 128, 128, 0.5)
+      opacity: 1
+
+
+    .search-field
+      width: 10px
+      opacity: 0
+      background-color: transparent
+      color: white
+      outline: none
+      transition: .5s
+
+      &::placeholder
+        color: white
+
+  .account-img-wrapper
     height: 50%
-    border-radius: 10px
+    padding: $link-padding
+    display: flex
+    align-items: center
 
-    &:hover
-      opacity: .8
+    i
+      padding: 5px
+
+    .account-img
+      height: 100%
+      object-fit: contain
+      cursor: pointer
+      border-radius: 5px
+      transition: .3s
+
+      &:hover
+        opacity: .7
 
 </style>
