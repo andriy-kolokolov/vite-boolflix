@@ -1,12 +1,12 @@
 <template>
-    <div class="card-wrapper">
-      <img class="movie-poster-img" :src="imagesRootPath + movie.poster_path" alt="">
-      <div class="movie-info">
-        <div class="movie-title">{{ movie.title }}</div>
-        <div class="movie-language">{{ movie.original_language }}</div>
-        <div class="movie-vote">{{ movie.vote_average }}</div>
-      </div>
+  <div class="card-wrapper">
+    <img class="movie-poster-img" :src="tryGetPoster(movie.poster_path)" alt="">
+    <div class="movie-info">
+      <div class="movie-title">{{ movie.title }}</div>
+      <div class="movie-language">{{ movie.original_language }}</div>
+      <div class="movie-vote">{{ movie.vote_average }}</div>
     </div>
+  </div>
 
 </template>
 
@@ -14,7 +14,8 @@
 export default {
   data() {
     return {
-      imagesRootPath: "http://image.tmdb.org/t/p/w500"
+      imagesRootPath: "http://image.tmdb.org/t/p/w500", // 'w500' is for img width
+      posterNotFoundImg: "/movie-poster-not-found.png"  // public dir
     }
   },
   name: "MovieCard",
@@ -24,11 +25,38 @@ export default {
       required: true
     }
   },
+  methods: {
+    tryGetPoster(posterPath) {
+      return posterPath === null ? this.posterNotFoundImg : this.imagesRootPath + posterPath;
+    }
+  }
 
 }
 </script>
 
 <style lang="sass" scoped>
+.card-wrapper
+  position: relative
 
+  &:hover .movie-info
+    opacity: 1
+
+
+.movie-info
+  cursor: pointer
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.75)
+  color: white
+  opacity: 0
+  transition: opacity .3s ease-in-out
+
+.movie-poster-img
+  object-fit: cover
+  height: 100%
+  width: 100%
 
 </style>

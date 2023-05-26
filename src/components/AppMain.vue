@@ -4,16 +4,19 @@
         class="result-list-content"
 
     />
+
   </div>
 </template>
 
 <script>
 import MainResultList from "./MainResultList.vue";
-import {store} from "../store.js";
 
 export default {
   name: "AppMain",
   components: {MainResultList},
+  props: {
+    moviesReceived: false
+  },
   data() {
     return {}
   }
@@ -22,8 +25,9 @@ export default {
 
 <style lang="sass" scoped>
 @use "../assets/main" as *
-
-.result-list-content
+.main-wrapper
+  padding-inline: $main-container-inline-padding
   margin-top: $header-height
+
 
 </style>

@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import {store} from "../store.js";
+
 export default {
   name: "AppHeader",
   data() {
@@ -51,11 +53,25 @@ export default {
   methods: {
     search() {
       if (this.searchTerm.length !== 0) {
+        store.arrMovies = [];
         this.$emit('search', this.searchTerm)
         this.searchTerm = '';
       }
+    },
+    handleScroll() {
+      if (window.pageYOffset > 50) {
+        this.$el.classList.add("active");
+      } else {
+        this.$el.classList.remove("active");
+      }
     }
-  }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll)
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
 }
 </script>
 
@@ -66,16 +82,20 @@ $gap-elements: 20px
 $link-padding: 10px
 
 .header
-  padding-inline: 25px
+  padding-inline: $header-container-inline-padding
   height: $header-height
   display: flex
   justify-content: space-between
   position: fixed
   inset: 0
   z-index: 50
+  transition: .75s
 
   & > *
     height: 100%
+
+  &.active
+    background-color: $body-color
 
 .header__left
   display: flex

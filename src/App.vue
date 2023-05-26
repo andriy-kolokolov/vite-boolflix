@@ -4,8 +4,12 @@ import {AppHeader, AppMain} from './components/index'
 
 <template>
   <div class="page-wrapper">
-    <app-header @search="requestToAPI" />
-    <app-main />
+    <app-header
+        @search="requestToAPI"
+    />
+    <app-main
+        :moviesReceived="moviesReceived"
+    />
   </div>
 </template>
 
@@ -36,7 +40,7 @@ export default {
           .catch(error => {
                 console.error("Error requesting to API", error);
               }
-          )
+          );
     },
   }
 }
