@@ -16,7 +16,7 @@ import {store} from "../store.js";
 import MovieCard from "./UI/MovieCard.vue";
 
 export default {
-  name: "MainResultList",
+  name: "MainResultListMovies",
   components: {MovieCard},
   data() {
     return {
@@ -27,12 +27,14 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@use '../assets/main' as *
+
 $grid-cols: 6
-$grid-gap: 20px
+$grid-gap: 10px
 
 .v-enter-active,
 .v-leave-active
-  transition: opacity 1s ease
+  transition: opacity 2s ease
 
 
 .v-enter-from,
@@ -44,5 +46,19 @@ $grid-gap: 20px
   display: grid
   grid-template-columns: repeat($grid-cols, 1fr)
   gap: $grid-gap
+
+
+@media (max-width: $md-breakpoint)
+  .search-results-wrapper
+    grid-template-columns: repeat(4, 1fr)
+
+@media (max-width: $sm-breakpoint)
+  .search-results-wrapper
+    grid-template-columns: repeat(2, 1fr)
+
+@media (max-width: $xs-breakpoint)
+  .search-results-wrapper
+    grid-template-columns: repeat(1, 1fr)
+
 
 </style>

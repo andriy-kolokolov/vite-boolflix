@@ -1,6 +1,6 @@
 <template>
-  <div class="main-wrapper">
-    <main-result-list
+  <div class="main-wrapper container-fluid">
+    <main-result-list-movies
         class="result-list-content"
 
     />
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import MainResultList from "./MainResultList.vue";
+import MainResultListMovies from "./MainResultListMovies.vue";
 
 export default {
   name: "AppMain",
-  components: {MainResultList},
+  components: {MainResultListMovies},
   props: {
     moviesReceived: false
   },

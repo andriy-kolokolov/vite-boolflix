@@ -1,6 +1,6 @@
 <template>
-  <header class="header">
-    <div class="header__left d-md-flex">
+  <header class="header container-fluid">
+    <div class="header__left">
       <img class="logo-img" src="/logo_netflix.png" alt="netflix logo image">
 
       <ul class="nav-list">
@@ -26,12 +26,12 @@
         </div>
       </div>
       <i class="fa-regular fa-bell"></i>
-<!--      <div class="dropdown">-->
-<!--        <select class="language-dropdown">-->
-<!--          <option value="en">English</option>-->
-<!--          <option value="fr">Italiano</option>-->
-<!--        </select>-->
-<!--      </div>-->
+      <!--      <div class="dropdown">-->
+      <!--        <select class="language-dropdown">-->
+      <!--          <option value="en">English</option>-->
+      <!--          <option value="fr">Italiano</option>-->
+      <!--        </select>-->
+      <!--      </div>-->
       <div class="account-img-wrapper">
         <img class="account-img" src="/account_img.png" alt="">
         <i class="m-0 fa-solid fa-caret-down"></i>
@@ -96,6 +96,11 @@ $link-padding: 10px
 
   &.active
     background-color: $body-color
+    height: 60px
+
+    .account-img-wrapper
+      transition: 1s
+      height: 80%
 
 .header__left
   display: flex
@@ -135,6 +140,8 @@ $link-padding: 10px
       opacity: .7
 
   .input-group
+    display: flex
+    gap: 10px
 
     .input-group-text
       color: white
@@ -144,10 +151,10 @@ $link-padding: 10px
 
     &:hover .search-field,
     &:focus-within .search-field
+
       width: 250px
       border: 1px solid rgba(128, 128, 128, 0.5)
       opacity: 1
-
 
     .search-field
       width: 10px
@@ -161,10 +168,11 @@ $link-padding: 10px
         color: white
 
   .account-img-wrapper
-    height: 50%
+    height: 60%
     padding: $link-padding
     display: flex
     align-items: center
+    transition: 1s
 
     i
       padding: 5px
