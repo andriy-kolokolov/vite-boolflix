@@ -35,14 +35,31 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@use '../../assets/main' as *
+
 .card-wrapper
   position: relative
+  transition: all .3s
+  height: $card-height
+
+  &:hover
+    margin: 0 20px
+    transform: scale(1.1)
 
   &:hover .movie-info
     opacity: 1
 
+.v-enter-active,
+.v-leave-active
+  transition: opacity 2s ease
+
+
+.v-enter-from,
+.v-leave-to
+  opacity: 0
 
 .movie-info
+  padding: 30px 10px
   cursor: pointer
   position: absolute
   top: 0

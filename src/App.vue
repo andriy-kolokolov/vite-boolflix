@@ -8,7 +8,7 @@ import {AppHeader, AppMain} from './components/index'
         @search="requestToAPI"
     />
     <app-main
-        :moviesReceived="moviesReceived"
+
     />
   </div>
 </template>

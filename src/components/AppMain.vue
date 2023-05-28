@@ -1,5 +1,6 @@
 <template>
   <div class="main-wrapper container-fluid">
+
     <main-result-list-movies
         class="result-list-content"
 
