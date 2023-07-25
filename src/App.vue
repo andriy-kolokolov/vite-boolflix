@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     requestToAPI(searchTerm) {
+      store.searching = true;
       axios.get("https://api.themoviedb.org/3/search/movie", {
         params: {
           api_key: "bbb653d61f5c4cedfff8c7fa5a6267c1",
@@ -35,9 +36,11 @@ export default {
           .then(response => {
                 console.log(response.data.results);
                 this.store.arrMovies = response.data.results;
+                store.searching = false;
               }
           )
           .catch(error => {
+                store.searching = false;
                 console.error("Error requesting to API", error);
               }
           );

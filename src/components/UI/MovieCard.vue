@@ -1,10 +1,12 @@
 <template>
-  <div class="card-wrapper">
-    <img class="movie-poster-img" :src="tryGetPoster(movie.poster_path)" alt="">
-    <div class="movie-info">
-      <div class="movie-title">{{ movie.title }}</div>
-      <div class="movie-language">{{ movie.original_language }}</div>
-      <div class="movie-vote">{{ movie.vote_average }}</div>
+  <div>
+    <div class="card-wrapper">
+      <img class="movie-poster-img" :src="tryGetPoster(movie.poster_path)" alt="">
+      <div class="movie-info">
+        <div class="movie-title">Title: {{ movie.title }}</div>
+        <div class="movie-language">Language: {{ movie.original_language }}</div>
+        <div class="movie-vote">AVG vote: {{ movie.vote_average }}</div>
+      </div>
     </div>
   </div>
 
@@ -43,8 +45,7 @@ export default {
   height: $card-height
 
   &:hover
-    margin: 0 20px
-    transform: scale(1.1)
+    transform: scale(1.05)
 
   &:hover .movie-info
     opacity: 1
@@ -66,7 +67,7 @@ export default {
   left: 0
   width: 100%
   height: 100%
-  background-color: rgba(0, 0, 0, 0.75)
+  background-color: rgba(0, 0, 0, 0.50)
   color: white
   opacity: 0
   transition: opacity .3s ease-in-out

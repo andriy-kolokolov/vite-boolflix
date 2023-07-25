@@ -19,7 +19,9 @@ export default {
     moviesReceived: false
   },
   data() {
-    return {}
+    return {
+
+    }
   }
 }
 </script>
